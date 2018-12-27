@@ -1,9 +1,12 @@
 package pojos;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "usuario")
@@ -29,7 +32,6 @@ public class Usuario implements Serializable{
 	private String email;
 	
 	public Usuario() {
-		
 	}
 	
 	public Usuario (String dni, String nombre, String ape1, String ape2, String fech, String email) {

@@ -15,7 +15,6 @@ public class Main {
 	private static EntityManagerFactory emf;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		emf = Persistence.createEntityManagerFactory("bolsa_empleo");
 		
