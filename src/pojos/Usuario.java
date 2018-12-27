@@ -12,8 +12,10 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 public class Usuario implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "dni")
+	@Column(name = "dni",length = 9) //si no le pongo el lenth me da fallo porque el id tiene que ser menor de 1000 bytes
 	private String dni;
 	
 	@Column(name = "nombre")
@@ -91,7 +93,6 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 	
-	@Override
 	public String toString() {
 		return "Usuario :\n D.N.I: " + dni + "\nNombre: " + nombre + " " + apellido1 + " " + apellido2 
 				+ "\nFecha Nacimiento: " + fecha_nac	+ "\nEmail: " + email;

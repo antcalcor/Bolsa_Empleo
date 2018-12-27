@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import pojos.Usuario;
@@ -20,7 +21,19 @@ public class Main {
 		
 		manager = emf.createEntityManager();
 		
-		List<Usuario> usuarios = (List<Usuario>) manager.createQuery("FROM usuario").getResultList();
+		List<Usuario> usuarios;
+		
+		EntityTransaction transaction = manager.getTransaction();
+		
+		transaction.begin();
+		
+		//Usuario a = new Usuario("jjj","asdf","asdf","asdf","asd","asf");
+		
+		//manager.persist(a); // insertar usuarios lo hace bien
+		
+		usuarios = manager.createQuery("FROM usuario",Usuario.class).getResultList(); // las consultas me dan fallos
+		
+		transaction.commit();
 		
 		System.out.println("hay " + usuarios.size() + " empleados");
 		
