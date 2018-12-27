@@ -31,7 +31,7 @@ public class Main {
 		
 		//manager.persist(a); // insertar usuarios lo hace bien
 		
-		usuarios = manager.createQuery("FROM usuario",Usuario.class).getResultList(); // las consultas me dan fallos
+		usuarios = manager.createQuery("FROM Usuario",Usuario.class).getResultList(); // las consultas me dan fallos
 		
 		transaction.commit();
 		
