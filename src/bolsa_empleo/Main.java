@@ -1,22 +1,30 @@
 package bolsa_empleo;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class Main {
+import pojos.Usuario;
 
-    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("bolsa_empleo");
+public class Main {
     
+	private static EntityManager manager;
+
+	private static EntityManagerFactory emf;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		emf = Persistence.createEntityManagerFactory("bolsa_empleo");
 		
+		manager = emf.createEntityManager();
 		
+		List<Usuario> usuarios = (List<Usuario>) manager.createQuery("FROM usuario").getResultList();
 		
+		System.out.println("hay " + usuarios.size() + " empleados");
 		
-		
-		
-		ENTITY_MANAGER_FACTORY.close();
+
 	}
 }
