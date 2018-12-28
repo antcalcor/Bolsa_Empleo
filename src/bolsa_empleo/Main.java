@@ -1,5 +1,6 @@
 package bolsa_empleo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -27,7 +28,9 @@ public class Main {
 		
 		transaction.begin();
 		
-		//Usuario a = new Usuario("jjj","asdf","asdf","asdf","asd","asf");
+		LocalDate fecha = LocalDate.of(1987, 03, 20);
+		
+		//Usuario a = new Usuario("jjj","asdf","asdf","asdf",fecha,"asf");
 		
 		//manager.persist(a); // insertar usuarios lo hace bien
 		
@@ -37,6 +40,5 @@ public class Main {
 		
 		System.out.println("hay " + usuarios.size() + " empleados");
 		
-
 	}
 }

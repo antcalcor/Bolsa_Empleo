@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Usuario implements Serializable{
 	private String apellido2;
 	
 	@Column(name = "fecha_nac")
-	private String fecha_nac;
+	private LocalDate fecha_nac;
 	
 	@Column(name = "email")
 	private String email;
@@ -36,7 +37,7 @@ public class Usuario implements Serializable{
 	public Usuario() {
 	}
 	
-	public Usuario (String dni, String nombre, String ape1, String ape2, String fech, String email) {
+	public Usuario (String dni, String nombre, String ape1, String ape2, LocalDate fech, String email) {
 		this.dni = dni;
 		this.nombre = nombre;
 		apellido1 = ape1;
@@ -77,11 +78,11 @@ public class Usuario implements Serializable{
 		this.apellido2 = apellido2;
 	}
 	
-	public String getFecha_nac() {
+	public LocalDate getFecha_nac() {
 		return fecha_nac;
 	}
 	
-	public void setFecha_nac(String fecha_nac) {
+	public void setFecha_nac(LocalDate fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
 	
