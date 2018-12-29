@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import pojos.Usuario;
+import pojos.*;
 
 public class Main {
     
@@ -36,7 +36,11 @@ public class Main {
 		a.setApellido2("Leon");
 		a.setFecha_nac(LocalDate.of(1987, 03, 20));
 		
+		Familia b = new Familia();
+		
+		b.setIdFamilia(new IdFamilia(a,"hermano",20));
 		manager.persist(a);
+		manager.persist(b);
 		
 		usuarios = manager.createQuery("FROM Usuario",Usuario.class).getResultList();
 		
