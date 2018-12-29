@@ -2,7 +2,6 @@ package bolsa_empleo;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -28,16 +27,22 @@ public class Main {
 		
 		transaction.begin();
 		
-		LocalDate fecha = LocalDate.of(1987, 03, 20);
+		Usuario a = new Usuario();
 		
-		//Usuario a = new Usuario("jjj","asdf","asdf","asdf",fecha,"asf");
+		a.setEmail("prueba@gmail.com");
+		a.setPassword("1234");
+		a.setNombre("Paco");
+		a.setApellido1("Gil");
+		a.setApellido2("Leon");
+		a.setFecha_nac(LocalDate.of(1987, 03, 20));
 		
-		//manager.persist(a); // insertar usuarios lo hace bien
+		manager.persist(a);
 		
-		usuarios = manager.createQuery("FROM Usuario",Usuario.class).getResultList(); // las consultas me dan fallos
+		usuarios = manager.createQuery("FROM Usuario",Usuario.class).getResultList();
 		
 		transaction.commit();
 		
+		System.out.println(usuarios.get(0));
 		System.out.println("hay " + usuarios.size() + " empleados");
 		
 	}
