@@ -5,32 +5,27 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
-@Embeddable
 public class IdFamilia implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
-    private Usuario id;
+	
+    private Usuario usuario;
  
-    @Column(name = "parentesco", length = 100)
     private String parentesco;
     
-    @Column(name = "edad")
     private int edad;
  
     public IdFamilia() {
     }
  
     public IdFamilia(Usuario id, String parentesco, int edad) {
-    	this.id = id;
+    	this.usuario = id;
     	this.parentesco = parentesco;
     	this.edad = edad;
     }
  
     public Usuario getUsuario() {
-        return id;
+        return usuario;
     }
  
     public String getParentesco() {

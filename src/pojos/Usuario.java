@@ -2,6 +2,10 @@ package pojos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -13,8 +17,8 @@ public class Usuario implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "idUsuario")
+	private int idUsuario;
 
 	@Column(name = "dni")
 	private String dni;
@@ -82,7 +86,21 @@ public class Usuario implements Serializable{
 	@Column(name = "elegido")
 	private boolean elegido = false;
 	
+	//-----------------------------------------------------
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<Familia> familiares;
+	
+	public List<Familia> getFamiliares() {
+		return familiares;
+	}
+
+	public void setFamiliares(ArrayList<Familia> familiares) {
+		this.familiares = familiares;
+	}
+
 	public Usuario() {
+		this.familiares = new ArrayList<Familia>();
 	}
 	
 	public Usuario(String dni, String password, String nombre, String apellido1, String apellido2, String direccion,
@@ -108,15 +126,16 @@ public class Usuario implements Serializable{
 		this.fech_alta = fech_alta;
 		this.foto = foto;
 		this.cv = cv;
+		this.familiares = new ArrayList<Familia>();
 		
 	}
 
-	public int getId() {
-		return id;
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUsuario(int id) {
+		this.idUsuario = id;
 	}
 
 	public String getDni() {
@@ -297,7 +316,7 @@ public class Usuario implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Usuario:\nid: " + id + "\ndni: " + dni + "\npassword: " + password + "\nnombre: " + nombre + "\napellido1: "
+		return "Usuario:\nid: " + idUsuario + "\ndni: " + dni + "\npassword: " + password + "\nnombre: " + nombre + "\napellido1: "
 				+ apellido1 + "\napellido2: " + apellido2 + "\ndireccion: " + direccion + "\nlocalidad: " + localidad
 				+ "\ncp: " + cp + "\nprovincia: " + provincia + "\ntelef: " + telef + "\nmovil: " + movil + "\nemail: "
 				+ email + "\nestado: " + estado + "\nfecha_nac: " + fecha_nac + "\nadmin: " + admin + "\nult_modif: "

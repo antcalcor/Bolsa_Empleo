@@ -1,6 +1,7 @@
 package bolsa_empleo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,12 +36,19 @@ public class Main {
 		a.setApellido1("Gil");
 		a.setApellido2("Leon");
 		a.setFecha_nac(LocalDate.of(1987, 03, 20));
-		
 		Familia b = new Familia();
 		
-		b.setIdFamilia(new IdFamilia(a,"hermano",20));
+//		b.setIdFamilia(new IdFamilia(a,"hermano",20));
+		b.setUsuario(a);
+		b.setEdad(20);
+		b.setParentesco("hermano");
+		a.getFamiliares().add(b);
 		manager.persist(a);
-		manager.persist(b);
+//		manager.persist(b);
+		Usuario d = manager.find(Usuario.class, 1);
+//		Familia c = manager.find(Familia.class, new IdFamilia(d,"hermano",20));
+		
+//		manager.remove(c);
 		
 		usuarios = manager.createQuery("FROM Usuario",Usuario.class).getResultList();
 		
