@@ -86,12 +86,16 @@ public class Usuario implements Serializable{
 	
 	//-----------------------------------------------------
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "idUsuario", cascade = CascadeType.ALL)
 	private List<Familia> familiares;
 	
-	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "idUsuario", cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID_USU")
 	private Formacion formacion;
+	
+	@OneToOne(mappedBy = "idUsuario")
+	@JoinColumn(name = "ID_USU")
+	private Idioma idioma;
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
@@ -318,12 +322,13 @@ public class Usuario implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Usuario:\nid: " + idUsuario + "\ndni: " + dni + "\npassword: " + password + "\nnombre: " + nombre + "\napellido1: "
-				+ apellido1 + "\napellido2: " + apellido2 + "\ndireccion: " + direccion + "\nlocalidad: " + localidad
-				+ "\ncp: " + cp + "\nprovincia: " + provincia + "\ntelef: " + telef + "\nmovil: " + movil + "\nemail: "
-				+ email + "\nestado: " + estado + "\nfecha_nac: " + fecha_nac + "\nult_modif: "
-				+ ult_modif + "\nseg_soc: " + seg_soc + "\ncuenta_seg_soc: " + cuenta_seg_soc + "\nfech_alta: " + fech_alta
-				+ "\nfoto: " + foto + "\ncv: " + cv + "\nelegido: " + elegido;
+		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
+				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", direccion=" + direccion + ", localidad="
+				+ localidad + ", cp=" + cp + ", provincia=" + provincia + ", telef=" + telef + ", movil=" + movil
+				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idUser=" + idUser
+				+ ", ult_modif=" + ult_modif + ", seg_soc=" + seg_soc + ", cuenta_seg_soc=" + cuenta_seg_soc
+				+ ", fech_alta=" + fech_alta + ", foto=" + foto + ", cv=" + cv + ", elegido=" + elegido
+				+ ", familiares=" + familiares + ", formacion=" + formacion + "]";
 	}
 
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@IdClass(FamiliaPK.class)
+@IdClass(pojos.PKCompuesta.FamiliaPK.class)
 @Table(name = "FAMILIA")
 public class Familia implements Serializable{
 	
@@ -13,8 +13,8 @@ public class Familia implements Serializable{
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "ID_USU_F", referencedColumnName = "ID_USU")
-	private Usuario usuario;
+	@JoinColumn(name = "ID_USU")
+	private Usuario idUsuario;
 	
 	@Id
 	@Column(name = "PARENTESCO", length = 45)
@@ -35,7 +35,7 @@ public class Familia implements Serializable{
 	}
 
 	public Familia(Usuario usuario, String parentesco, int edad, String profesion, String situ_lab) {
-		this.usuario = usuario;
+		this.idUsuario = usuario;
 		this.parentesco = parentesco;
 		this.edad = edad;
 		this.profesion = profesion;
@@ -43,11 +43,11 @@ public class Familia implements Serializable{
 	}
 	
 	public Usuario getUsuario() {
-		return usuario;
+		return idUsuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+		this.idUsuario = usuario;
 	}
 
 	public String getParentesco() {
@@ -82,4 +82,10 @@ public class Familia implements Serializable{
 		this.situ_lab = situ_lab;
 	}
 
+	@Override
+	public String toString() {
+		return "Familia [parentesco=" + parentesco + ", edad=" + edad + ", profesion=" + profesion + ", situ_lab="
+				+ situ_lab + ", idUsuario=" + idUsuario.getIdUsuario() + "]";
+	}
+	
 }
