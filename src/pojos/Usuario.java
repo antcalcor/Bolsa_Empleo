@@ -20,31 +20,31 @@ public class Usuario implements Serializable{
 	@Column(name = "idUsuario")
 	private int idUsuario;
 
-	@Column(name = "dni")
+	@Column(name = "dni", length = 45)
 	private String dni;
 	
-	@Column(name = "password")
+	@Column(name = "password", length = 45)
 	private String password;
 
-	@Column(name ="nombre")
+	@Column(name ="nombre", length = 45)
 	private String nombre;
 	
-	@Column(name = "apellido1")
+	@Column(name = "apellido1", length = 45)
 	private String apellido1;
 	
-	@Column(name = "apellido2")
+	@Column(name = "apellido2", length = 45)
 	private String apellido2;
 	
-	@Column(name = "direccion")
+	@Column(name = "direccion", length = 45)
 	private String direccion;
 	
-	@Column(name = "localidad")
+	@Column(name = "localidad", length = 45)
 	private String localidad;
 	
 	@Column(name = "cp")
 	private int cp;
 	
-	@Column(name = "provincia")
+	@Column(name = "provincia", length = 45)
 	private String provincia;
 	
 	@Column(name = "telef")
@@ -53,34 +53,37 @@ public class Usuario implements Serializable{
 	@Column(name = "movil")
 	private int movil;
 
-	@Column(name = "email", length = 100, unique = true)//para clave tiene que tener menos de 1000 bytes
+	@Column(name = "email", length = 45, unique = true)
 	private String email;
 	
-	@Column(name = "estado")
+	@Column(name = "estado", length = 45)
 	private String estado;
 
 	@Column(name = "fecha_nac")
+	@Temporal(TemporalType.DATE)
 	private LocalDate fecha_nac;
 	
-	@Column(name = "admin")//SUSTITUTO DE ID_USER
-	private boolean admin = false;
+	@Column(name = "idUser")
+	private int idUser;
 	
 	@Column(name = "ult_modif")
+	@Temporal(TemporalType.DATE)
 	private LocalDate ult_modif;
 	
-	@Column(name = "seg_soc")
+	@Column(name = "seg_soc", length = 45)
 	private String seg_soc;
 	
-	@Column(name = "cuenta_seg_soc")
+	@Column(name = "cuenta_seg_soc", length = 45)
 	private String cuenta_seg_soc;
 	
 	@Column(name = "fech_alta")
+	@Temporal(TemporalType.DATE)
 	private LocalDate fech_alta;
 	
-	@Column(name = "foto")
+	@Column(name = "foto", length = 45)
 	private String foto;
 	
-	@Column(name = "cv")
+	@Column(name = "cv", length = 45)
 	private String cv;
 	
 	@Column(name = "elegido")
@@ -90,14 +93,6 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private List<Familia> familiares;
-	
-	public List<Familia> getFamiliares() {
-		return familiares;
-	}
-
-	public void setFamiliares(ArrayList<Familia> familiares) {
-		this.familiares = familiares;
-	}
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
@@ -249,13 +244,13 @@ public class Usuario implements Serializable{
 	public void setFecha_nac(LocalDate fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
-
-	public boolean isAdmin() {
-		return admin;
+	
+	public int getIdUser() {
+		return idUser;
 	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 
 	public LocalDate getUlt_modif() {
@@ -313,13 +308,21 @@ public class Usuario implements Serializable{
 	public void setElegido(boolean elegido) {
 		this.elegido = elegido;
 	}
+	
+	public List<Familia> getFamiliares() {
+		return familiares;
+	}
+	
+	public void setFamiliares(List<Familia> familiares) {
+		this.familiares = familiares;
+	}
 
 	@Override
 	public String toString() {
 		return "Usuario:\nid: " + idUsuario + "\ndni: " + dni + "\npassword: " + password + "\nnombre: " + nombre + "\napellido1: "
 				+ apellido1 + "\napellido2: " + apellido2 + "\ndireccion: " + direccion + "\nlocalidad: " + localidad
 				+ "\ncp: " + cp + "\nprovincia: " + provincia + "\ntelef: " + telef + "\nmovil: " + movil + "\nemail: "
-				+ email + "\nestado: " + estado + "\nfecha_nac: " + fecha_nac + "\nadmin: " + admin + "\nult_modif: "
+				+ email + "\nestado: " + estado + "\nfecha_nac: " + fecha_nac + "\nult_modif: "
 				+ ult_modif + "\nseg_soc: " + seg_soc + "\ncuenta_seg_soc: " + cuenta_seg_soc + "\nfech_alta: " + fech_alta
 				+ "\nfoto: " + foto + "\ncv: " + cv + "\nelegido: " + elegido;
 	}

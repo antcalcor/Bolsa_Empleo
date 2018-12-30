@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@IdClass(IdFamilia.class)
+@IdClass(FamiliaPK.class)
 @Table(name = "familia")
 public class Familia implements Serializable{
 	
@@ -17,17 +17,17 @@ public class Familia implements Serializable{
 	private Usuario usuario;
 	
 	@Id
-	@Column(name = "parentesco", length = 20)
+	@Column(name = "parentesco", length = 45)
 	private String parentesco;
 	
 	@Id
 	@Column(name = "edad")
 	private int edad;
 	
-	@Column(name = "profesion")
+	@Column(name = "profesion", length = 45)
 	private String profesion;
 	
-	@Column(name = "situ_lab")
+	@Column(name = "situ_lab", length = 45)
 	private String situ_lab;
 	
 	public Familia() {

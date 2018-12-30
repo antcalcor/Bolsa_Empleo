@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
-public class IdFamilia implements Serializable{
+public class FamiliaPK implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -15,10 +15,10 @@ public class IdFamilia implements Serializable{
     
     private int edad;
  
-    public IdFamilia() {
+    public FamiliaPK() {
     }
  
-    public IdFamilia(Usuario id, String parentesco, int edad) {
+    public FamiliaPK(Usuario id, String parentesco, int edad) {
     	this.usuario = id;
     	this.parentesco = parentesco;
     	this.edad = edad;
@@ -39,8 +39,8 @@ public class IdFamilia implements Serializable{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof IdFamilia)) return false;
-        IdFamilia that = (IdFamilia) o;
+        if (!(o instanceof FamiliaPK)) return false;
+        FamiliaPK that = (FamiliaPK) o;
         return Objects.equals(getUsuario(), that.getUsuario()) &&
                 Objects.equals(getParentesco(), that.getParentesco()) &&
                 Objects.equals(getEdad(), that.getEdad());
