@@ -6,28 +6,28 @@ import javax.persistence.*;
 
 @Entity
 @IdClass(FamiliaPK.class)
-@Table(name = "familia")
+@Table(name = "FAMILIA")
 public class Familia implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "idUsuario_F", referencedColumnName = "idUsuario")
+	@JoinColumn(name = "ID_USU_F", referencedColumnName = "ID_USU")
 	private Usuario usuario;
 	
 	@Id
-	@Column(name = "parentesco", length = 45)
+	@Column(name = "PARENTESCO", length = 45)
 	private String parentesco;
 	
 	@Id
-	@Column(name = "edad")
+	@Column(name = "EDAD")
 	private int edad;
 	
-	@Column(name = "profesion", length = 45)
+	@Column(name = "PROFESION", length = 45)
 	private String profesion;
 	
-	@Column(name = "situ_lab", length = 45)
+	@Column(name = "SITU_LAB", length = 45)
 	private String situ_lab;
 	
 	public Familia() {

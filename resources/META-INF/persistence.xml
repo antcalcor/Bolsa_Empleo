@@ -7,6 +7,7 @@
         <!-- Entity classes -->
         <class>pojos.Usuario</class>
         <class>pojos.Familia</class>
+        <class>pojos.Formacion</class>
         <properties>
             <!-- The JDBC driver of your database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -3,96 +3,95 @@ package pojos;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "USUARIO")
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idUsuario")
+	@Column(name = "ID_USU")
 	private int idUsuario;
 
-	@Column(name = "dni", length = 45)
+	@Column(name = "DNI", length = 45)
 	private String dni;
 	
-	@Column(name = "password", length = 45)
+	@Column(name = "PASS", length = 45)
 	private String password;
 
-	@Column(name ="nombre", length = 45)
+	@Column(name ="NOMBRE", length = 45)
 	private String nombre;
 	
-	@Column(name = "apellido1", length = 45)
+	@Column(name = "APELL1", length = 45)
 	private String apellido1;
 	
-	@Column(name = "apellido2", length = 45)
+	@Column(name = "APELL2", length = 45)
 	private String apellido2;
 	
-	@Column(name = "direccion", length = 45)
+	@Column(name = "DIREC", length = 45)
 	private String direccion;
 	
-	@Column(name = "localidad", length = 45)
+	@Column(name = "LOCALIDAD", length = 45)
 	private String localidad;
 	
-	@Column(name = "cp")
+	@Column(name = "COD_POST")
 	private int cp;
 	
-	@Column(name = "provincia", length = 45)
+	@Column(name = "PROVINCIA", length = 45)
 	private String provincia;
 	
-	@Column(name = "telef")
+	@Column(name = "TELEF")
 	private int telef;
 	
-	@Column(name = "movil")
+	@Column(name = "MOVIL")
 	private int movil;
 
-	@Column(name = "email", length = 45, unique = true)
+	@Column(name = "EMAIL", length = 45, unique = true)
 	private String email;
 	
-	@Column(name = "estado", length = 45)
+	@Column(name = "ESTADO", length = 45)
 	private String estado;
 
-	@Column(name = "fecha_nac")
-	@Temporal(TemporalType.DATE)
+	@Column(name = "FECHA_NAC")
 	private LocalDate fecha_nac;
 	
-	@Column(name = "idUser")
+	@Column(name = "ID_USER")
 	private int idUser;
 	
-	@Column(name = "ult_modif")
-	@Temporal(TemporalType.DATE)
+	@Column(name = "ULT_MODIF")
 	private LocalDate ult_modif;
 	
-	@Column(name = "seg_soc", length = 45)
+	@Column(name = "SEG_SOC", length = 45)
 	private String seg_soc;
 	
-	@Column(name = "cuenta_seg_soc", length = 45)
+	@Column(name = "CUENTA_SEG_SOC", length = 45)
 	private String cuenta_seg_soc;
 	
-	@Column(name = "fech_alta")
-	@Temporal(TemporalType.DATE)
+	@Column(name = "FECHA_ALTA")
 	private LocalDate fech_alta;
 	
-	@Column(name = "foto", length = 45)
+	@Column(name = "FOTO", length = 45)
 	private String foto;
 	
-	@Column(name = "cv", length = 45)
+	@Column(name = "CV", length = 45)
 	private String cv;
 	
-	@Column(name = "elegido")
+	@Column(name = "ELEGIDO")
 	private boolean elegido = false;
 	
 	//-----------------------------------------------------
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private List<Familia> familiares;
+	
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_USU")
+	private Formacion formacion;
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
