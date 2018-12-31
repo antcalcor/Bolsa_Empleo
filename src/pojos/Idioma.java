@@ -2,7 +2,6 @@ package pojos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -18,17 +17,19 @@ public class Idioma implements Serializable{
 	@JoinColumn(name = "ID_USU")
 	private Usuario idUsuario;
 	
-//	@Id
-//	@OneToMany(mappedBy = "idioma")
-//	@JoinColumn(name = "ID_TIPO")
-//	private List<IdiomaTipo> Tipo;
-//	
-//	@Id
-//	@OneToMany(mappedBy = "idioma")
-//	@JoinColumn(name = "ID_NIVEL")
-//	private List<IdiomaNivel> Nivel;
+	//@Id
+	@OneToOne
+	@JoinColumn(name = "ID_TIPO", unique = true, nullable = false)
+	private IdiomaTipo idTipo;
 	
-	@Column(name = "ENTIDAD")
+	//no se como poner 3pk y cada una relacionada con una tabla, me da fallos por mas que lo intento
+	
+	//@Id
+	@OneToOne
+	@JoinColumn(name = "ID_NIVEL", unique = true, nullable = false)//
+	private IdiomaNivel idNivel;
+	
+	@Column(name = "ENTIDAD", length = 45)
 	private String entidad;
 	
 	@Column(name = "FECH_FIN")

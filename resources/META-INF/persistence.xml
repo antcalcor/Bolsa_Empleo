@@ -9,6 +9,8 @@
         <class>pojos.Familia</class>
         <class>pojos.Formacion</class>
         <class>pojos.Idioma</class>
+        <class>pojos.IdiomaNivel</class>
+        <class>pojos.IdiomaTipo</class>
         <properties>
             <!-- The JDBC driver of your database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -21,6 +23,7 @@
             
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
         	<property name="hibernate.hbm2ddl.auto" value="update" />
+        	<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
         	<property name="hibernate.show_sql" value="true"/>
         	<property name="hibernate.format_sql" value="true"/>
         </properties>
