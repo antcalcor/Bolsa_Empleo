@@ -93,18 +93,23 @@ public class Usuario implements Serializable{
 	@JoinColumn(name = "ID_USU")
 	private Formacion formacion;
 	
-	@OneToOne(mappedBy = "idUsuario")
-	@JoinColumn(name = "ID_USU")
-	private Idioma idioma;
+	@OneToMany(mappedBy = "idUsuario")
+	private List<Idioma> idioma;
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
+		this.idioma = new ArrayList<Idioma>();
 	}
 	
-	public Usuario(String dni, String password, String nombre, String apellido1, String apellido2, String direccion,
-			String localidad, int cp, String provincia, int telef, int movil, String email, String estado,
-			LocalDate fecha_nac, String seg_soc, String cuenta_seg_soc, LocalDate fech_alta, String foto, String cv) {
+	
+
+	public Usuario(int idUsuario, String dni, String password, String nombre, String apellido1, String apellido2,
+			String direccion, String localidad, int cp, String provincia, int telef, int movil, String email,
+			String estado, LocalDate fecha_nac, int idUser, LocalDate ult_modif, String seg_soc, String cuenta_seg_soc,
+			LocalDate fech_alta, String foto, String cv, boolean elegido, List<Familia> familiares, Formacion formacion,
+			List<Idioma> idioma) {
 		
+		this.idUsuario = idUsuario;
 		this.dni = dni;
 		this.password = password;
 		this.nombre = nombre;
@@ -119,13 +124,17 @@ public class Usuario implements Serializable{
 		this.email = email;
 		this.estado = estado;
 		this.fecha_nac = fecha_nac;
+		this.idUser = idUser;
+		this.ult_modif = ult_modif;
 		this.seg_soc = seg_soc;
 		this.cuenta_seg_soc = cuenta_seg_soc;
 		this.fech_alta = fech_alta;
 		this.foto = foto;
 		this.cv = cv;
-		this.familiares = new ArrayList<Familia>();
-		
+		this.elegido = elegido;
+		this.familiares = familiares;
+		this.formacion = formacion;
+		this.idioma = idioma;
 	}
 
 	public int getIdUsuario() {
@@ -320,6 +329,22 @@ public class Usuario implements Serializable{
 		this.familiares = familiares;
 	}
 
+	public Formacion getFormacion() {
+		return formacion;
+	}
+
+	public void setFormacion(Formacion formacion) {
+		this.formacion = formacion;
+	}
+
+	public List<Idioma> getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(List<Idioma> idioma) {
+		this.idioma = idioma;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
@@ -328,7 +353,7 @@ public class Usuario implements Serializable{
 				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idUser=" + idUser
 				+ ", ult_modif=" + ult_modif + ", seg_soc=" + seg_soc + ", cuenta_seg_soc=" + cuenta_seg_soc
 				+ ", fech_alta=" + fech_alta + ", foto=" + foto + ", cv=" + cv + ", elegido=" + elegido
-				+ ", familiares=" + familiares + ", formacion=" + formacion + "]";
+				+ ", familiares=" + familiares + ", formacion=" + formacion + ", idioma=" + idioma + "]";
 	}
 
 }
