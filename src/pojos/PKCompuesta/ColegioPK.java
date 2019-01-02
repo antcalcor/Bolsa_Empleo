@@ -1,12 +1,11 @@
 package pojos.PKCompuesta;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import pojos.ColegioLista;
 import pojos.Usuario;
 
-public class EntrevistaPK implements Serializable{
+public class ColegioPK implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,17 +13,14 @@ public class EntrevistaPK implements Serializable{
 	
 	private ColegioLista idColegio;
 	
-	private LocalDate fechEntrevista;
-	
-	public EntrevistaPK() {
+	public ColegioPK() {
 		
 	}
 
-	public EntrevistaPK(Usuario idUsuario, ColegioLista idColegio, LocalDate fechEntrevista) {
+	public ColegioPK(Usuario idUsuario, ColegioLista idColegio) {
 		
 		this.idUsuario = idUsuario;
 		this.idColegio = idColegio;
-		this.fechEntrevista = fechEntrevista;
 		
 	}
 	

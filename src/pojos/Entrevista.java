@@ -20,7 +20,7 @@ public class Entrevista implements Serializable{
 	@Id
 	@OneToOne
 	@JoinColumn(name = "COLEGIO")
-	private Colegio idColegio;
+	private ColegioLista idColegio;
 	
 	@Id
 	@Column(name = "FECH_ENTREV")
@@ -36,7 +36,7 @@ public class Entrevista implements Serializable{
 		
 	}
 
-	public Entrevista(Usuario idUsuario, Colegio idColegio, LocalDate fechEntrevista, String entrevistardor,
+	public Entrevista(Usuario idUsuario, ColegioLista idColegio, LocalDate fechEntrevista, String entrevistardor,
 			String observaciones) {
 		
 		this.idUsuario = idUsuario;
@@ -55,11 +55,11 @@ public class Entrevista implements Serializable{
 		this.idUsuario = idUsuario;
 	}
 
-	public Colegio getIdColegio() {
+	public ColegioLista getIdColegio() {
 		return idColegio;
 	}
 
-	public void setIdColegio(Colegio idColegio) {
+	public void setIdColegio(ColegioLista idColegio) {
 		this.idColegio = idColegio;
 	}
 

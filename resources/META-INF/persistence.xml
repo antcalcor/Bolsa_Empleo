@@ -18,6 +18,7 @@
         <class>pojos.Fp</class>
         <class>pojos.Permisos</class>
         <class>pojos.Colegio</class>
+        <class>pojos.ColegioLista</class>
         <class>pojos.Competencias</class>
         <class>pojos.EmpleoLista</class>
         <class>pojos.Empleo</class>

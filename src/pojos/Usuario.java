@@ -76,9 +76,8 @@ public class Usuario implements Serializable{
 	@Column(name = "FECHA_ALTA")
 	private LocalDate fech_alta;
 	
-	@OneToOne
-	@JoinColumn(name = "ID_COLEGIO")
-	private Colegio idColegio; // no se si esto deberiamos de quitarlo del usuario
+	@OneToMany(mappedBy = "idUsuario")
+	private List<Colegio> Colegio; //lo he quitado de atributo del usuario porque puede tener mas de uno
 	
 	@Column(name = "FOTO", length = 45)
 	private String foto;
@@ -135,6 +134,7 @@ public class Usuario implements Serializable{
 
 	public Usuario() {
 		
+		this.Colegio = new ArrayList<Colegio>();
 		this.familiares = new ArrayList<Familia>();
 		this.idioma = new ArrayList<Idioma>();
 		this.universidad = new ArrayList<Universidad>();
@@ -151,7 +151,7 @@ public class Usuario implements Serializable{
 	public Usuario(int idUsuario, String dni, String password, String nombre, String apellido1, String apellido2,
 			String direccion, String localidad, int cp, String provincia, int telef, int movil, String email,
 			String estado, LocalDate fecha_nac, Permisos idPermiso, LocalDate ult_modif, String seg_soc,
-			String cuenta_seg_soc, LocalDate fech_alta, Colegio idColegio, String foto, String cv, boolean elegido,
+			String cuenta_seg_soc, LocalDate fech_alta, List<Colegio> Colegio, String foto, String cv, boolean elegido,
 			List<Familia> familiares, Formacion formacion, List<Idioma> idioma, List<Universidad> universidad,
 			List<Master> master, Competencias compentencias, List<Empleo> empleo, List<Entrevista> entrevista,
 			List<ExperienciaNoDocente> expNoDocente, List<ExperienciaNoReglada> expNoReglada,
@@ -177,7 +177,7 @@ public class Usuario implements Serializable{
 		this.seg_soc = seg_soc;
 		this.cuenta_seg_soc = cuenta_seg_soc;
 		this.fech_alta = fech_alta;
-		this.idColegio = idColegio;
+		this.Colegio = Colegio;
 		this.foto = foto;
 		this.cv = cv;
 		this.elegido = elegido;
@@ -421,12 +421,12 @@ public class Usuario implements Serializable{
 		this.master = master;
 	}
 
-	public Colegio getIdColegio() {
-		return idColegio;
+	public List<Colegio> getColegio() {
+		return Colegio;
 	}
 
-	public void setIdColegio(Colegio idColegio) {
-		this.idColegio = idColegio;
+	public void setColegio(List<Colegio> Colegio) {
+		this.Colegio = Colegio;
 	}
 
 	public Competencias getCompentencias() {
@@ -500,7 +500,7 @@ public class Usuario implements Serializable{
 				+ localidad + ", cp=" + cp + ", provincia=" + provincia + ", telef=" + telef + ", movil=" + movil
 				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idPermiso=" + idPermiso
 				+ ", ult_modif=" + ult_modif + ", seg_soc=" + seg_soc + ", cuenta_seg_soc=" + cuenta_seg_soc
-				+ ", fech_alta=" + fech_alta + ", idColegio=" + idColegio + ", foto=" + foto + ", cv=" + cv
+				+ ", fech_alta=" + fech_alta + ", Colegio=" + Colegio + ", foto=" + foto + ", cv=" + cv
 				+ ", elegido=" + elegido + ", familiares=" + familiares + ", formacion=" + formacion + ", idioma="
 				+ idioma + ", universidad=" + universidad + ", master=" + master + ", compentencias=" + compentencias
 				+ ", empleo=" + empleo + ", entrevista=" + entrevista + ", expNoDocente=" + expNoDocente
