@@ -27,4 +27,55 @@ public class Master implements Serializable{
 	@Column(name = "CENTRO", length = 45)
 	private String centro;
 
+	public Master() {
+		
+	}
+
+	public Master(Usuario idUsuario, String tituloMaster, LocalDate fechFin, String centro) {
+		
+		this.idUsuario = idUsuario;
+		this.tituloMaster = tituloMaster;
+		this.fechFin = fechFin;
+		this.centro = centro;
+		
+	}
+
+	public Usuario getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Usuario idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getTituloMaster() {
+		return tituloMaster;
+	}
+
+	public void setTituloMaster(String tituloMaster) {
+		this.tituloMaster = tituloMaster;
+	}
+
+	public LocalDate getFechFin() {
+		return fechFin;
+	}
+
+	public void setFechFin(LocalDate fechFin) {
+		this.fechFin = fechFin;
+	}
+
+	public String getCentro() {
+		return centro;
+	}
+
+	public void setCentro(String centro) {
+		this.centro = centro;
+	}
+
+	@Override
+	public String toString() {
+		return "Master [idUsuario=" + idUsuario.getIdUsuario() + ", tituloMaster=" + tituloMaster + ", fechFin=" + fechFin
+				+ ", centro=" + centro + "]";
+	}
+	
 }

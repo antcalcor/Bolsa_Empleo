@@ -60,8 +60,9 @@ public class Usuario implements Serializable{
 	@Column(name = "FECHA_NAC")
 	private LocalDate fecha_nac;
 	
-	@Column(name = "ID_USER")
-	private int idUser;
+	@OneToOne
+	@JoinColumn(name = "ID_PERMISO") //id_user es este campo lo he modificado para entenderlo mejor
+	private Permisos idPermiso;
 	
 	@Column(name = "ULT_MODIF")
 	private LocalDate ult_modif;
@@ -113,7 +114,7 @@ public class Usuario implements Serializable{
 
 	public Usuario(int idUsuario, String dni, String password, String nombre, String apellido1, String apellido2,
 			String direccion, String localidad, int cp, String provincia, int telef, int movil, String email,
-			String estado, LocalDate fecha_nac, int idUser, LocalDate ult_modif, String seg_soc, String cuenta_seg_soc,
+			String estado, LocalDate fecha_nac, Permisos idPermiso, LocalDate ult_modif, String seg_soc, String cuenta_seg_soc,
 			LocalDate fech_alta, String foto, String cv, boolean elegido, List<Familia> familiares, Formacion formacion,
 			List<Idioma> idioma, List<Universidad> universidad, List<Master> master) {
 		
@@ -132,7 +133,7 @@ public class Usuario implements Serializable{
 		this.email = email;
 		this.estado = estado;
 		this.fecha_nac = fecha_nac;
-		this.idUser = idUser;
+		this.idPermiso = idPermiso;
 		this.ult_modif = ult_modif;
 		this.seg_soc = seg_soc;
 		this.cuenta_seg_soc = cuenta_seg_soc;
@@ -267,12 +268,12 @@ public class Usuario implements Serializable{
 		this.fecha_nac = fecha_nac;
 	}
 	
-	public int getIdUser() {
-		return idUser;
+	public Permisos getIdPermisos() {
+		return idPermiso;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setIdPermisos(Permisos idPermiso) {
+		this.idPermiso = idPermiso;
 	}
 
 	public LocalDate getUlt_modif() {
@@ -355,18 +356,32 @@ public class Usuario implements Serializable{
 		this.idioma = idioma;
 	}
 
+	public List<Universidad> getUniversidad() {
+		return universidad;
+	}
 
+	public void setUniversidad(List<Universidad> universidad) {
+		this.universidad = universidad;
+	}
+
+	public List<Master> getMaster() {
+		return master;
+	}
+
+	public void setMaster(List<Master> master) {
+		this.master = master;
+	}
 
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
 				+ ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", direccion=" + direccion + ", localidad="
 				+ localidad + ", cp=" + cp + ", provincia=" + provincia + ", telef=" + telef + ", movil=" + movil
-				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idUser=" + idUser
+				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idPermiso=" + idPermiso
 				+ ", ult_modif=" + ult_modif + ", seg_soc=" + seg_soc + ", cuenta_seg_soc=" + cuenta_seg_soc
 				+ ", fech_alta=" + fech_alta + ", foto=" + foto + ", cv=" + cv + ", elegido=" + elegido
 				+ ", familiares=" + familiares + ", formacion=" + formacion + ", idioma=" + idioma + ", universidad="
-				+ universidad + "]";
+				+ universidad + ", master=" + master + "]";
 	}
-
+	
 }

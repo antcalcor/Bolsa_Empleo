@@ -22,7 +22,7 @@ public class Fp implements Serializable{
 	@JoinColumn(name = "ID_FP")
 	private FpLista idFp;
 	
-	@Column(name = "CENTRO")
+	@Column(name = "CENTRO", length = 45)
 	private String centro;
 	
 	@Column(name = "FECH_FIN")
