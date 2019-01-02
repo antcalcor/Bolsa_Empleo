@@ -98,11 +98,15 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<Universidad> universidad;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<Master> master;
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
 		this.idioma = new ArrayList<Idioma>();
 		this.universidad = new ArrayList<Universidad>();
+		this.master = new ArrayList<Master>();
 	}
 	
 	
@@ -111,7 +115,7 @@ public class Usuario implements Serializable{
 			String direccion, String localidad, int cp, String provincia, int telef, int movil, String email,
 			String estado, LocalDate fecha_nac, int idUser, LocalDate ult_modif, String seg_soc, String cuenta_seg_soc,
 			LocalDate fech_alta, String foto, String cv, boolean elegido, List<Familia> familiares, Formacion formacion,
-			List<Idioma> idioma, List<Universidad> universidad) {
+			List<Idioma> idioma, List<Universidad> universidad, List<Master> master) {
 		
 		this.idUsuario = idUsuario;
 		this.dni = dni;
@@ -140,6 +144,7 @@ public class Usuario implements Serializable{
 		this.formacion = formacion;
 		this.idioma = idioma;
 		this.universidad = universidad;
+		this.master = master;
 	}
 
 	public int getIdUsuario() {

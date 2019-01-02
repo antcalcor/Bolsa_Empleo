@@ -11,6 +11,11 @@
         <class>pojos.Idioma</class>
         <class>pojos.IdiomaNivel</class>
         <class>pojos.IdiomaTipo</class>
+        <class>pojos.Universidad</class>
+        <class>pojos.UniversidadLista</class>
+        <class>pojos.Master</class>
+        <class>pojos.FpLista</class>
+        <class>pojos.Fp</class>
         <properties>
             <!-- The JDBC driver of your database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

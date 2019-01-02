@@ -24,25 +24,4 @@ public class UniversidadPK implements Serializable{
 		
 	}
 
-	public Usuario getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	public UniversidadLista getIdTitulo() {
-		return idTitulo;
-	}
-
-	public void setIdTitulo(UniversidadLista idTitulo) {
-		this.idTitulo = idTitulo;
-	}
-
-	@Override
-	public String toString() {
-		return "UniversidadPK [idUsuario=" + idUsuario + ", idTitulo=" + idTitulo + "]";
-	}
-	
 }

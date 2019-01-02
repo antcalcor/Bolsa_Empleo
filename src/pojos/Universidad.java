@@ -22,7 +22,7 @@ public class Universidad implements Serializable{
 	@JoinColumn(name = "ID_TITULO")
 	private UniversidadLista idTitulo;
 	
-	@Column(name = "UNIVERSIDAD")
+	@Column(name = "UNIVERSIDAD", length = 45)
 	private String universidad;
 	
 	@Column(name = "FECH_FIN")
