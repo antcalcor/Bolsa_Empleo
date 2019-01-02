@@ -76,6 +76,10 @@ public class Usuario implements Serializable{
 	@Column(name = "FECHA_ALTA")
 	private LocalDate fech_alta;
 	
+	@OneToOne
+	@JoinColumn(name = "ID_COLEGIO")
+	private Colegio idColegio; // no se si esto deberiamos de quitarlo del usuario
+	
 	@Column(name = "FOTO", length = 45)
 	private String foto;
 	
