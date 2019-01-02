@@ -125,6 +125,9 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<ExperienciaReglada> expReglada;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<CursoProfesor> cursoProfesor;
 
 	public Usuario() {
 		
@@ -137,6 +140,7 @@ public class Usuario implements Serializable{
 		this.expNoDocente = new ArrayList<ExperienciaNoDocente>();
 		this.expNoReglada = new ArrayList<ExperienciaNoReglada>();
 		this.expReglada = new ArrayList<ExperienciaReglada>();
+		this.cursoProfesor = new ArrayList<CursoProfesor>();
 		
 	}
 
@@ -147,7 +151,7 @@ public class Usuario implements Serializable{
 			List<Familia> familiares, Formacion formacion, List<Idioma> idioma, List<Universidad> universidad,
 			List<Master> master, Competencias compentencias, List<Empleo> empleo, List<Entrevista> entrevista,
 			List<ExperienciaNoDocente> expNoDocente, List<ExperienciaNoReglada> expNoReglada,
-			List<ExperienciaReglada> expReglada) {
+			List<ExperienciaReglada> expReglada, List<CursoProfesor> cursoProfesor) {
 		
 		this.idUsuario = idUsuario;
 		this.dni = dni;
@@ -184,6 +188,7 @@ public class Usuario implements Serializable{
 		this.expNoDocente = expNoDocente;
 		this.expNoReglada = expNoReglada;
 		this.expReglada = expReglada;
+		this.cursoProfesor = cursoProfesor;
 		
 	}
 
@@ -467,6 +472,14 @@ public class Usuario implements Serializable{
 		this.expReglada = expReglada;
 	}
 
+	public List<CursoProfesor> getCursoProfesor() {
+		return cursoProfesor;
+	}
+
+	public void setCursoProfesor(List<CursoProfesor> cursoProfesor) {
+		this.cursoProfesor = cursoProfesor;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
@@ -478,7 +491,8 @@ public class Usuario implements Serializable{
 				+ ", elegido=" + elegido + ", familiares=" + familiares + ", formacion=" + formacion + ", idioma="
 				+ idioma + ", universidad=" + universidad + ", master=" + master + ", compentencias=" + compentencias
 				+ ", empleo=" + empleo + ", entrevista=" + entrevista + ", expNoDocente=" + expNoDocente
-				+ ", expNoReglada=" + expNoReglada + ", expReglada=" + expReglada + "]";
+				+ ", expNoReglada=" + expNoReglada + ", expReglada=" + expReglada + ", cursoProfesor=" + cursoProfesor
+				+ "]";
 	}
-	
+
 }

@@ -16,7 +16,7 @@ public class UniversidadLista implements Serializable{
 	private int idTitulo;
 	
 	@Column(name = "TITULO", length = 45,unique	 = true, nullable = false)
-	private String titulo; // no lo he hecho id porque no es necesario y con hibernate se complica un poco si lo pongo
+	private String titulo; // no lo he hecho id porque no es necesario y con hibernate se complica 'un poco' si lo pongo
 	
 	public UniversidadLista(int idLista, String titulo) {
 		
