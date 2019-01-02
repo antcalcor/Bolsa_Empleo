@@ -106,6 +106,10 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<Master> master;
+	
+	@OneToOne(mappedBy = "idUsuario")
+	@JoinColumn(name = "ID_USU")
+	private Competencias compentencias;
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
