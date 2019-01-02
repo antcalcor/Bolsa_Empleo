@@ -18,14 +18,18 @@ public class Colegio implements Serializable{
 	@Column(name = "COLEGIO", length = 45)
 	private String colegio;
 	
+	@Column(name = "LOCALIDAD", length = 45)
+	private String localidad;
+	
 	public Colegio() {
 		
 	}
 
-	public Colegio(int idColegio, String colegio) {
+	public Colegio(int idColegio, String colegio, String localidad) {
 		
 		this.idColegio = idColegio;
 		this.colegio = colegio;
+		this.localidad = localidad;
 		
 	}
 
@@ -45,9 +49,17 @@ public class Colegio implements Serializable{
 		this.colegio = colegio;
 	}
 
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
 	@Override
 	public String toString() {
-		return "Colegio [idColegio=" + idColegio + ", colegio=" + colegio + "]";
+		return "Colegio [idColegio=" + idColegio + ", colegio=" + colegio + ", localidad=" + localidad + "]";
 	}
 
 }

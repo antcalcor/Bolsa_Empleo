@@ -113,21 +113,41 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<Empleo> empleo;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<Entrevista> entrevista;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<ExperienciaNoDocente> expNoDocente;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<ExperienciaNoReglada> expNoReglada;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<ExperienciaReglada> expReglada;
 
 	public Usuario() {
+		
 		this.familiares = new ArrayList<Familia>();
 		this.idioma = new ArrayList<Idioma>();
 		this.universidad = new ArrayList<Universidad>();
 		this.master = new ArrayList<Master>();
+		this.empleo = new ArrayList<Empleo>();
+		this.entrevista = new ArrayList<Entrevista>();
+		this.expNoDocente = new ArrayList<ExperienciaNoDocente>();
+		this.expNoReglada = new ArrayList<ExperienciaNoReglada>();
+		this.expReglada = new ArrayList<ExperienciaReglada>();
+		
 	}
-	
-	
 
 	public Usuario(int idUsuario, String dni, String password, String nombre, String apellido1, String apellido2,
 			String direccion, String localidad, int cp, String provincia, int telef, int movil, String email,
-			String estado, LocalDate fecha_nac, Permisos idPermiso, LocalDate ult_modif, String seg_soc, String cuenta_seg_soc,
-			LocalDate fech_alta, String foto, String cv, boolean elegido, List<Familia> familiares, Formacion formacion,
-			List<Idioma> idioma, List<Universidad> universidad, List<Master> master) {
+			String estado, LocalDate fecha_nac, Permisos idPermiso, LocalDate ult_modif, String seg_soc,
+			String cuenta_seg_soc, LocalDate fech_alta, Colegio idColegio, String foto, String cv, boolean elegido,
+			List<Familia> familiares, Formacion formacion, List<Idioma> idioma, List<Universidad> universidad,
+			List<Master> master, Competencias compentencias, List<Empleo> empleo, List<Entrevista> entrevista,
+			List<ExperienciaNoDocente> expNoDocente, List<ExperienciaNoReglada> expNoReglada,
+			List<ExperienciaReglada> expReglada) {
 		
 		this.idUsuario = idUsuario;
 		this.dni = dni;
@@ -149,6 +169,7 @@ public class Usuario implements Serializable{
 		this.seg_soc = seg_soc;
 		this.cuenta_seg_soc = cuenta_seg_soc;
 		this.fech_alta = fech_alta;
+		this.idColegio = idColegio;
 		this.foto = foto;
 		this.cv = cv;
 		this.elegido = elegido;
@@ -157,6 +178,13 @@ public class Usuario implements Serializable{
 		this.idioma = idioma;
 		this.universidad = universidad;
 		this.master = master;
+		this.compentencias = compentencias;
+		this.empleo = empleo;
+		this.entrevista = entrevista;
+		this.expNoDocente = expNoDocente;
+		this.expNoReglada = expNoReglada;
+		this.expReglada = expReglada;
+		
 	}
 
 	public int getIdUsuario() {
@@ -279,11 +307,11 @@ public class Usuario implements Serializable{
 		this.fecha_nac = fecha_nac;
 	}
 	
-	public Permisos getIdPermisos() {
+	public Permisos getIdPermiso() {
 		return idPermiso;
 	}
 
-	public void setIdPermisos(Permisos idPermiso) {
+	public void setIdPermiso(Permisos idPermiso) {
 		this.idPermiso = idPermiso;
 	}
 
@@ -383,6 +411,62 @@ public class Usuario implements Serializable{
 		this.master = master;
 	}
 
+	public Colegio getIdColegio() {
+		return idColegio;
+	}
+
+	public void setIdColegio(Colegio idColegio) {
+		this.idColegio = idColegio;
+	}
+
+	public Competencias getCompentencias() {
+		return compentencias;
+	}
+
+	public void setCompentencias(Competencias compentencias) {
+		this.compentencias = compentencias;
+	}
+
+	public List<Empleo> getEmpleo() {
+		return empleo;
+	}
+
+	public void setEmpleo(List<Empleo> empleo) {
+		this.empleo = empleo;
+	}
+
+	public List<Entrevista> getEntrevista() {
+		return entrevista;
+	}
+
+	public void setEntrevista(List<Entrevista> entrevista) {
+		this.entrevista = entrevista;
+	}
+
+	public List<ExperienciaNoDocente> getExpNoDocente() {
+		return expNoDocente;
+	}
+
+	public void setExpNoDocente(List<ExperienciaNoDocente> expNoDocente) {
+		this.expNoDocente = expNoDocente;
+	}
+
+	public List<ExperienciaNoReglada> getExpNoReglada() {
+		return expNoReglada;
+	}
+
+	public void setExpNoReglada(List<ExperienciaNoReglada> expNoReglada) {
+		this.expNoReglada = expNoReglada;
+	}
+
+	public List<ExperienciaReglada> getExpReglada() {
+		return expReglada;
+	}
+
+	public void setExpReglada(List<ExperienciaReglada> expReglada) {
+		this.expReglada = expReglada;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
@@ -390,9 +474,11 @@ public class Usuario implements Serializable{
 				+ localidad + ", cp=" + cp + ", provincia=" + provincia + ", telef=" + telef + ", movil=" + movil
 				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idPermiso=" + idPermiso
 				+ ", ult_modif=" + ult_modif + ", seg_soc=" + seg_soc + ", cuenta_seg_soc=" + cuenta_seg_soc
-				+ ", fech_alta=" + fech_alta + ", foto=" + foto + ", cv=" + cv + ", elegido=" + elegido
-				+ ", familiares=" + familiares + ", formacion=" + formacion + ", idioma=" + idioma + ", universidad="
-				+ universidad + ", master=" + master + "]";
+				+ ", fech_alta=" + fech_alta + ", idColegio=" + idColegio + ", foto=" + foto + ", cv=" + cv
+				+ ", elegido=" + elegido + ", familiares=" + familiares + ", formacion=" + formacion + ", idioma="
+				+ idioma + ", universidad=" + universidad + ", master=" + master + ", compentencias=" + compentencias
+				+ ", empleo=" + empleo + ", entrevista=" + entrevista + ", expNoDocente=" + expNoDocente
+				+ ", expNoReglada=" + expNoReglada + ", expReglada=" + expReglada + "]";
 	}
 	
 }
