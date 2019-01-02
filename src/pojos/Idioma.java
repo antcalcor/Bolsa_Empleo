@@ -22,11 +22,9 @@ public class Idioma implements Serializable{
 	@JoinColumn(name = "ID_TIPO")
 	private IdiomaTipo idTipo;
 	
-	//no se como poner 3pk y cada una relacionada con una tabla, me da fallos por mas que lo intento
-	
 	@Id
 	@OneToOne
-	@JoinColumn(name = "ID_NIVEL")//
+	@JoinColumn(name = "ID_NIVEL")
 	private IdiomaNivel idNivel;
 	
 	@Column(name = "ENTIDAD", length = 45)
@@ -34,5 +32,65 @@ public class Idioma implements Serializable{
 	
 	@Column(name = "FECH_FIN")
 	private LocalDate fechFin;
+	
+	public Idioma() {
+		
+	}
+
+	public Idioma(Usuario idUsuario, IdiomaTipo idTipo, IdiomaNivel idNivel, String entidad, LocalDate fechFin) {
+		
+		this.idUsuario = idUsuario;
+		this.idTipo = idTipo;
+		this.idNivel = idNivel;
+		this.entidad = entidad;
+		this.fechFin = fechFin;
+		
+	}
+
+	public Usuario getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Usuario idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public IdiomaTipo getIdTipo() {
+		return idTipo;
+	}
+
+	public void setIdTipo(IdiomaTipo idTipo) {
+		this.idTipo = idTipo;
+	}
+
+	public IdiomaNivel getIdNivel() {
+		return idNivel;
+	}
+
+	public void setIdNivel(IdiomaNivel idNivel) {
+		this.idNivel = idNivel;
+	}
+
+	public String getEntidad() {
+		return entidad;
+	}
+
+	public void setEntidad(String entidad) {
+		this.entidad = entidad;
+	}
+
+	public LocalDate getFechFin() {
+		return fechFin;
+	}
+
+	public void setFechFin(LocalDate fechFin) {
+		this.fechFin = fechFin;
+	}
+
+	@Override
+	public String toString() {
+		return "Idioma [idUsuario=" + idUsuario.getIdUsuario() + ", idTipo=" + idTipo + ", idNivel=" + idNivel + ", entidad=" + entidad
+				+ ", fechFin=" + fechFin + "]";
+	}
 	
 }

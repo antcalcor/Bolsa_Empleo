@@ -95,10 +95,14 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<Idioma> idioma;
+	
+	@OneToMany(mappedBy = "idUsuario")
+	private List<Universidad> universidad;
 
 	public Usuario() {
 		this.familiares = new ArrayList<Familia>();
 		this.idioma = new ArrayList<Idioma>();
+		this.universidad = new ArrayList<Universidad>();
 	}
 	
 	
@@ -107,7 +111,7 @@ public class Usuario implements Serializable{
 			String direccion, String localidad, int cp, String provincia, int telef, int movil, String email,
 			String estado, LocalDate fecha_nac, int idUser, LocalDate ult_modif, String seg_soc, String cuenta_seg_soc,
 			LocalDate fech_alta, String foto, String cv, boolean elegido, List<Familia> familiares, Formacion formacion,
-			List<Idioma> idioma) {
+			List<Idioma> idioma, List<Universidad> universidad) {
 		
 		this.idUsuario = idUsuario;
 		this.dni = dni;
@@ -135,6 +139,7 @@ public class Usuario implements Serializable{
 		this.familiares = familiares;
 		this.formacion = formacion;
 		this.idioma = idioma;
+		this.universidad = universidad;
 	}
 
 	public int getIdUsuario() {
@@ -345,6 +350,8 @@ public class Usuario implements Serializable{
 		this.idioma = idioma;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
@@ -353,7 +360,8 @@ public class Usuario implements Serializable{
 				+ ", email=" + email + ", estado=" + estado + ", fecha_nac=" + fecha_nac + ", idUser=" + idUser
 				+ ", ult_modif=" + ult_modif + ", seg_soc=" + seg_soc + ", cuenta_seg_soc=" + cuenta_seg_soc
 				+ ", fech_alta=" + fech_alta + ", foto=" + foto + ", cv=" + cv + ", elegido=" + elegido
-				+ ", familiares=" + familiares + ", formacion=" + formacion + ", idioma=" + idioma + "]";
+				+ ", familiares=" + familiares + ", formacion=" + formacion + ", idioma=" + idioma + ", universidad="
+				+ universidad + "]";
 	}
 
 }

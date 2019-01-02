@@ -18,4 +18,36 @@ public class IdiomaNivel implements Serializable{
 	@Column(name = "DESC_NIVEL", length = 45)
 	private String descNivel;
 
+	public IdiomaNivel() {
+		
+	}
+
+	public IdiomaNivel(int idNivel, String descNivel) {
+		
+		this.idNivel = idNivel;
+		this.descNivel = descNivel;
+		
+	}
+
+	public int getIdNivel() {
+		return idNivel;
+	}
+
+	public void setIdNivel(int idNivel) {
+		this.idNivel = idNivel;
+	}
+
+	public String getDescNivel() {
+		return descNivel;
+	}
+
+	public void setDescNivel(String descNivel) {
+		this.descNivel = descNivel;
+	}
+
+	@Override
+	public String toString() {
+		return "IdiomaNivel [idNivel=" + idNivel + ", descNivel=" + descNivel + "]";
+	}
+	
 }
