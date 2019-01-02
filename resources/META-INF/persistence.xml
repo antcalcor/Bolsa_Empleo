@@ -25,6 +25,7 @@
         <class>pojos.ExperienciaNoDocente</class>
         <class>pojos.ExperienciaNoReglada</class>
         <class>pojos.ExperienciaReglada</class>
+        <class>pojos.CursoProfesor</class>
         <properties>
             <!-- The JDBC driver of your database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
