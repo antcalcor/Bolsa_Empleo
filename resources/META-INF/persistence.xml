@@ -26,6 +26,7 @@
         <class>pojos.ExperienciaNoReglada</class>
         <class>pojos.ExperienciaReglada</class>
         <class>pojos.CursoProfesor</class>
+        <class>pojos.MateriaProfesor</class>
         <properties>
             <!-- The JDBC driver of your database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -37,8 +38,11 @@
             <property name="javax.persistence.jdbc.password" value="1111" />
             
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
-        	<property name="hibernate.hbm2ddl.auto" value="update" />
-        	<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
+        	<property name="hibernate.hbm2ddl.auto" value="create" />
+        	<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+        	
+        	<!-- ESTA PUESTO PARA QUE CREE DESDE CERO LA BBDD CADA VEZ QUE SE INICIA EL PROGRAMA -->
+        	
         	<property name="hibernate.show_sql" value="true"/>
         	<property name="hibernate.format_sql" value="true"/>
         </properties>

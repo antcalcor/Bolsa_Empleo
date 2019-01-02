@@ -128,6 +128,10 @@ public class Usuario implements Serializable{
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<CursoProfesor> cursoProfesor;
+	
+	@OneToOne(mappedBy = "idUsuario",cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_USU")
+	private MateriaProfesor matProfesor;
 
 	public Usuario() {
 		
@@ -151,7 +155,7 @@ public class Usuario implements Serializable{
 			List<Familia> familiares, Formacion formacion, List<Idioma> idioma, List<Universidad> universidad,
 			List<Master> master, Competencias compentencias, List<Empleo> empleo, List<Entrevista> entrevista,
 			List<ExperienciaNoDocente> expNoDocente, List<ExperienciaNoReglada> expNoReglada,
-			List<ExperienciaReglada> expReglada, List<CursoProfesor> cursoProfesor) {
+			List<ExperienciaReglada> expReglada, List<CursoProfesor> cursoProfesor, MateriaProfesor matProfesor) {
 		
 		this.idUsuario = idUsuario;
 		this.dni = dni;
@@ -189,6 +193,7 @@ public class Usuario implements Serializable{
 		this.expNoReglada = expNoReglada;
 		this.expReglada = expReglada;
 		this.cursoProfesor = cursoProfesor;
+		this.matProfesor = matProfesor;
 		
 	}
 
@@ -480,6 +485,14 @@ public class Usuario implements Serializable{
 		this.cursoProfesor = cursoProfesor;
 	}
 
+	public MateriaProfesor getMatProfesor() {
+		return matProfesor;
+	}
+
+	public void setMatProfesor(MateriaProfesor matProfesor) {
+		this.matProfesor = matProfesor;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", dni=" + dni + ", password=" + password + ", nombre=" + nombre
@@ -492,7 +505,7 @@ public class Usuario implements Serializable{
 				+ idioma + ", universidad=" + universidad + ", master=" + master + ", compentencias=" + compentencias
 				+ ", empleo=" + empleo + ", entrevista=" + entrevista + ", expNoDocente=" + expNoDocente
 				+ ", expNoReglada=" + expNoReglada + ", expReglada=" + expReglada + ", cursoProfesor=" + cursoProfesor
-				+ "]";
+				+ ", matProfesor=" + matProfesor + "]";
 	}
 
 }
