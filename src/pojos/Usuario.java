@@ -51,7 +51,7 @@ public class Usuario implements Serializable{
 	@Column(name = "MOVIL")
 	private int movil;
 
-	@Column(name = "EMAIL", length = 45, unique = true)
+	@Column(name = "EMAIL", length = 45, unique = true, nullable = false)
 	private String email;
 	
 	@Column(name = "ESTADO", length = 45)
